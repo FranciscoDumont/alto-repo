@@ -29,9 +29,10 @@ emojis = {
 'x':':x:',
 'y':':v:',
 'z':':zzz:',
-' ':'  ',
+' ':':white_large_square:',
 '?':':question:',
-'!':':exclamation:'
+'!':':exclamation:',
+'.':':small_blue_diamond:'
 }
 
 def main():
