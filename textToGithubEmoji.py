@@ -29,7 +29,7 @@ emojis = {
 'x':':x:',
 'y':':v:',
 'z':':zzz:',
-' ':' \n',
+' ':'  ',
 '?':':question:',
 '!':':exclamation:'
 }
@@ -44,6 +44,7 @@ def main():
 		emojedString = emojedString + emojis[char]
 		
 	print(emojedString)
+	return(emojedString)
 
 
 if __name__ == "__main__":
