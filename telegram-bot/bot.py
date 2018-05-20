@@ -5,9 +5,11 @@ import logging
 import telegram
 from telegram.error import NetworkError, Unauthorized
 from time import sleep
+from random import randint
 
 from xd.message_filter import *
 from xd.emojiador import Emojiador
+from xd.mensaje_random import *
 
 from random import randint
 
@@ -23,11 +25,13 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
+emojiador = Emojiador()
+mensaje_random = MensajeRandom()
+happy_filter = HappyFilter()
+todo_filter = TodoFilter()
+
 
 def main():
-
-    happy_filter = HappyFilter()
-    emojiador = Emojiador()
 
     """Start the bot."""
     # Create the EventHandler and pass it your bot's token.
@@ -44,6 +48,9 @@ def main():
     #dp.add_handler(MessageHandler(Filters.text, echo))
 
     dp.add_handler(MessageHandler(happy_filter, compro))
+
+    """Este filter siempre tiene que estar ultimo"""
+    dp.add_handler(MessageHandler(todo_filter, random))
 
     # log all errors
     dp.add_error_handler(error)
@@ -75,10 +82,9 @@ def compro(bot,update):
     bot.send_message(chat_id=update.message.chat.id, text="COMPRO!!",reply_to_message_id=update.message.message_id)
 
 def random(bot,update):
-    chat_id = update.message.chat.id
-    user_id = update.message.from_user.id
-
-    bot.send_message(chat_id=update.message.chat.id, text="COMPRO!!",reply_to_message_id=update.message.message_id)
+    """Hay un 1/20 de probabilidad que responda alguna frase random"""
+    if randint(0,20)==1:
+        update.message.reply_text(mensaje_random.fraseRandom() )
 
 
 

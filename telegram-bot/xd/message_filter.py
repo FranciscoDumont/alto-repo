@@ -8,4 +8,6 @@ class HappyFilter(BaseFilter):
     def filter(self, message):
         return "patron" in message.text or "decision" in message.text
 
-
+class TodoFilter(BaseFilter):
+    def filter(self, message):
+        return message.text != ""
