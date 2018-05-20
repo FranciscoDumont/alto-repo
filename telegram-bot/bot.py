@@ -10,6 +10,7 @@ from random import randint
 from xd.message_filter import *
 from xd.emojiador import Emojiador
 from xd.mensaje_random import *
+from xd.token import *
 
 from random import randint
 
@@ -35,7 +36,7 @@ def main():
 
     """Start the bot."""
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater("606589324:AAFynsBS23okwvi6vN8CBtGDOmYd_kZ2wFo")
+    updater = Updater(TOKEN)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
